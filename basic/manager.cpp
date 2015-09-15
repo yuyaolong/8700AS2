@@ -10,8 +10,7 @@ Manager::~Manager() {
   // Manager made it, so Manager needs to delete it
   SDL_FreeSurface(orbSurface);
   delete orbFrame;
-  delete IOManager::getInstance();
-  delete Gamedata::getInstance();
+  //delete Gamedata::getInstance();
 }
 
 Manager::Manager() :
@@ -48,14 +47,26 @@ void Manager::drawBackground() const {
   SDL_BlitSurface( screen, NULL, screen, &dest );
 }
 
+void Manager::drawText() const{
+	io->printMessageCenteredAt("Project #1 Solution",0);
+
+ 	std::stringstream ss;
+  	ss << "Avg Fps: " << clock.getFps();
+  	io->printMessageAt(ss.str(),0,0);
+
+  	ss.str("");
+  	ss<< "Seconds: " << clock.getTime();
+  	io->printMessageAt(ss.str(),0,20);
+}
+
 void Manager::draw() const {
   drawBackground();
   orb.draw();
   clock.draw();
-    std::stringstream ss;
-  ss << "Avg Fps: " << clock.getFps();
-  io->printMessageAt(ss.str(),0,0);
-  io->printMessageAt("Seconds: ",0,20);
+  drawText();
+
+  
+
 
   SDL_Flip(screen);
   

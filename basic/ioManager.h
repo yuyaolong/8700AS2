@@ -28,7 +28,7 @@ public:
   void clearString() { inputString = ""; }
   const std::string& getString() const { return inputString; }
 private:
-  static IOManager* instance;
+  //static IOManager* instance;
   IOManager();
   IOManager(const IOManager&);
   IOManager& operator=(const IOManager&);

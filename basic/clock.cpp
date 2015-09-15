@@ -23,7 +23,8 @@ Clock::Clock() :
   lastTime(0),
   nowTime(0),
   fpsCounter(0),
-  fps(0)
+  fps(0),
+  totleTime(0)
   {
   start();
 }
@@ -37,13 +38,13 @@ Clock::Clock(const Clock& c) :
   lastTime(c.lastTime),
   nowTime(c.nowTime),
   fpsCounter(c.fpsCounter),
-  fps(c.fps)
+  fps(c.fps),
+  totleTime(c.totleTime)
   {
   start();
 }
 
 void Clock::draw() const { 
-  // Not drawing anything yet!
 }
 
 void Clock::update() { 
@@ -54,20 +55,24 @@ void Clock::update() {
 		if(paused)
 		{
 			ticks = 0;
+      fps = 0;
 		}
 		else
 		{
 			ticks = 5;
 			sumOfTicks += ticks;
+
+      nowTime = clock();
+      if( (nowTime - lastTime) > (CLOCKS_PER_SEC/4) )
+      {
+
+        lastTime = nowTime;
+        fps = fpsCounter*2;
+        fpsCounter = 0;
+        totleTime++;
+      }
 		}
-		nowTime = clock();
-		std::cout<<(nowTime - lastTime)/CLOCKS_PER_SEC <<std::endl;
-		if((nowTime - lastTime)/CLOCKS_PER_SEC > 1)
-		{
-			lastTime = nowTime;
-			fps = fpsCounter;
-			fpsCounter = 0;
-		}
+		
 	}
 	else
 	{
@@ -86,6 +91,10 @@ void Clock::toggleSloMo() {
 
 int Clock::getFps() const { 
   return fps;
+}
+
+int Clock::getTime() const{
+  return totleTime/2;
 }
 
 void Clock::start() { 

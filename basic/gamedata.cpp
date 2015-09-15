@@ -3,8 +3,8 @@
 #include "gamedata.h"
 
 Gamedata* Gamedata::getInstance() {
-  if ( !instance ) instance = new Gamedata;
-  return instance;
+  static Gamedata instance;
+  return &instance;
 }
 
 Gamedata::Gamedata(const string& fn ) :

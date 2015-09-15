@@ -1,7 +1,6 @@
 #include <SDL.h>
 #include <string>
 #include <deque>
-
 class Manager;
 
 class Clock {
@@ -14,6 +13,7 @@ public:
   bool isStarted() const { return started; }
   bool isPaused() const  { return paused;  }
   int getFps() const;
+  int getTime() const;
 
   void start();
   void pause();
@@ -28,10 +28,12 @@ private:
   bool sloMo;
   unsigned int sumOfTicks;
 
+
   int lastTime;
   int nowTime;
   int fpsCounter;
   int fps;
+  int totleTime;
 		
   Clock();
   Clock(const Clock&);

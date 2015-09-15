@@ -35,4 +35,5 @@ private:
   Manager(const Manager&);
   Manager& operator=(const Manager&);
   void drawBackground() const;
+  void drawText() const;
 };

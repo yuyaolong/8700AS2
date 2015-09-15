@@ -4,8 +4,8 @@
 using std::string;
 
 IOManager* IOManager::getInstance() {
-  if ( !instance ) instance = new IOManager;
-  return instance;
+  static IOManager instance;
+  return &instance;
 }
 
 IOManager::IOManager( ) :
