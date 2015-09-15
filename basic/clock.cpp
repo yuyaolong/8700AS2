@@ -70,6 +70,7 @@ void Clock::update() {
         fps = fpsCounter*2;
         fpsCounter = 0;
         totleTime++;
+        //std::cout<<rand()*1.0/RAND_MAX<<std::endl;
       }
 		}
 		

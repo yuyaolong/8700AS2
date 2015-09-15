@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <vector>
 #include "ioManager.h"
 #include "clock.h"
 #include "sprite.h"
@@ -34,6 +35,8 @@ private:
   std::string username;
   int frameMax;
   const std::string TITLE;
+
+  std::vector<Sprite> svector;
 
   void draw() const;
   void update();

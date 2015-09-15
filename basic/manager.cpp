@@ -40,6 +40,11 @@ Manager::Manager() :
   frameMax( Gamedata::getInstance()->getXmlInt("frameMax") ),
   TITLE( Gamedata::getInstance()->getXmlStr("screenTitle") )
 {
+  svector.reserve(50);
+  for (int i = 0; i < 50; ++i)
+  {
+      svector.push_back(Sprite("greenorb", orbFrame));
+  }
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     throw string("Unable to initialize SDL: ");
   }
@@ -71,6 +76,10 @@ void Manager::draw() const {
   drawBackground();
   backPicture.draw();
   orb.draw();
+  for (int i = 0; i < 50; ++i)
+  {
+    svector[i].draw();
+  }
   clock.draw();
   drawText();
 
@@ -85,6 +94,10 @@ void Manager::update() {
   clock.update();
   Uint32 ticks = clock.getTicksSinceLastFrame();
   orb.update(ticks);
+  for (int i = 0; i < 50; ++i)
+  {
+    svector[i].update(ticks);
+  }
 	
 	
   
