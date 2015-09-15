@@ -57,6 +57,8 @@ void Manager::drawText() const{
   	ss.str("");
   	ss<< "Seconds: " << clock.getTime();
   	io->printMessageAt(ss.str(),0,20);
+
+  	io->printMessageAt("Yaolong Yu's project",0,400);
 }
 
 void Manager::draw() const {
