@@ -28,6 +28,12 @@ Manager::Manager() :
   orbFrame( new Frame("greenorb", orbSurface) ),
   orb("greenorb", orbFrame),
 
+  backSurface( io->loadAndSet(
+    Gamedata::getInstance()->getXmlStr("backpicture/file"), 
+    Gamedata::getInstance()->getXmlBool("backpicture/transparency")) ),
+  backFrame( new Frame("backpicture", backSurface) ),
+  backPicture("backpicture", backFrame),
+
   makeVideo( false ),
   frameCount( 0 ),
   username(  Gamedata::getInstance()->getXmlStr("username") ),
@@ -63,6 +69,7 @@ void Manager::drawText() const{
 
 void Manager::draw() const {
   drawBackground();
+  backPicture.draw();
   orb.draw();
   clock.draw();
   drawText();

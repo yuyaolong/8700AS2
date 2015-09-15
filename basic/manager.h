@@ -23,6 +23,12 @@ private:
   const Frame * const orbFrame;
   Sprite orb;
 
+  //backPicture define
+  SDL_Surface* backSurface;
+  const Frame * const backFrame;
+  Sprite backPicture;
+
+
   bool makeVideo;
   int frameCount;
   std::string username;
