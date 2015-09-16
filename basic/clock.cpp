@@ -50,15 +50,16 @@ void Clock::draw() const {
 void Clock::update() { 
 	if(started)
 	{
-		fpsCounter++;
 		
 		if(paused)
 		{
 			ticks = 0;
-      fps = 0;
+      			fps = 0;
+		//	fpsCounter = 0;
 		}
 		else
 		{
+			fpsCounter++;
 			ticks = 5;
 			sumOfTicks += ticks;
 
