@@ -5,16 +5,16 @@
 
 Sprite::Sprite(const std::string& name, const Frame* const frame) :
   Drawable(name,
-           Vector2f(Gamedata::getInstance()->getXmlInt(name+"/startLoc/x"), 
-                    Gamedata::getInstance()->getXmlInt(name+"/startLoc/y")), 
-           Vector2f(Gamedata::getInstance()->getXmlInt(name+"/speedX")*(rand()*1.0/RAND_MAX+0.3), 
-                    Gamedata::getInstance()->getXmlInt(name+"/speedY")*(rand()*1.0/RAND_MAX+0.3))
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
+                    Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1:+1), 
+                    Gamedata::getInstance().getXmlInt(name+"/speedY")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1:+1))
            ),
   frame( frame ),
   frameWidth(frame->getWidth()),
   frameHeight(frame->getHeight()),
-  worldWidth(Gamedata::getInstance()->getXmlInt("world/width")),
-  worldHeight(Gamedata::getInstance()->getXmlInt("world/height"))
+  worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
 { }
 
 Sprite::Sprite(const Sprite& s) :
@@ -22,8 +22,8 @@ Sprite::Sprite(const Sprite& s) :
   frame(s.frame),  // shallow copy; Manager may reuse it
   frameWidth(s.getFrame()->getWidth()),
   frameHeight(s.getFrame()->getHeight()),
-  worldWidth(Gamedata::getInstance()->getXmlInt("world/width")),
-  worldHeight(Gamedata::getInstance()->getXmlInt("world/height"))
+  worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
 { }
 
 Sprite& Sprite::operator=(const Sprite& rhs) {

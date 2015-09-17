@@ -2,9 +2,9 @@
 #include <limits>
 #include "gamedata.h"
 
-Gamedata* Gamedata::getInstance() {
+Gamedata& Gamedata::getInstance() {
   static Gamedata instance;
-  return &instance;
+  return instance;
 }
 
 Gamedata::Gamedata(const string& fn ) :

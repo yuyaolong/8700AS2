@@ -12,22 +12,20 @@ public:
 
 private:
   const bool env;
-  const IOManager* io;
+  const IOManager& io;
   Clock& clock;
 
   SDL_Surface * const screen;
-  int backRed;
-  int backGreen;
-  int backBlue;
+  //int backRed;
+  //int backGreen;
+  //int backBlue;
 
   SDL_Surface* orbSurface;
   const Frame * const orbFrame;
   Sprite orb;
 
-  //backPicture define
   SDL_Surface* backSurface;
-  const Frame * const backFrame;
-  Sprite backPicture;
+  Frame backgroundfram;
 
 
   bool makeVideo;

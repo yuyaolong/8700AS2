@@ -6,7 +6,7 @@
 
 class Gamedata {
 public:
-  static Gamedata* getInstance();
+  static Gamedata& getInstance();
   void displayData() const;
 
   bool getXmlBool(const std::string&) const;

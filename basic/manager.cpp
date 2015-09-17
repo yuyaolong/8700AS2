@@ -17,28 +17,28 @@ Manager::Manager() :
   env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
   io( IOManager::getInstance() ),
   clock( Clock::getInstance() ),
-  screen( io->getScreen() ),
-  backRed( Gamedata::getInstance()->getXmlInt("back/red") ),
-  backGreen( Gamedata::getInstance()->getXmlInt("back/green") ),
-  backBlue( Gamedata::getInstance()->getXmlInt("back/blue") ),
+  screen( io.getScreen() ),
+  //backRed( Gamedata::getInstance().getXmlInt("back/red") ),
+  //backGreen( Gamedata::getInstance().getXmlInt("back/green") ),
+  //backBlue( Gamedata::getInstance().getXmlInt("back/blue") ),
 
-  orbSurface( io->loadAndSet(
-    Gamedata::getInstance()->getXmlStr("greenorb/file"), 
-    Gamedata::getInstance()->getXmlBool("greenorb/transparency")) ),
+  orbSurface( io.loadAndSet(
+    Gamedata::getInstance().getXmlStr("greenorb/file"), 
+    Gamedata::getInstance().getXmlBool("greenorb/transparency")) ),
   orbFrame( new Frame("greenorb", orbSurface) ),
   orb("greenorb", orbFrame),
 
-  backSurface( io->loadAndSet(
-    Gamedata::getInstance()->getXmlStr("backpicture/file"), 
-    Gamedata::getInstance()->getXmlBool("backpicture/transparency")) ),
-  backFrame( new Frame("backpicture", backSurface) ),
-  backPicture("backpicture", backFrame),
+  backSurface( io.loadAndSet(
+    Gamedata::getInstance().getXmlStr("backpicture/file"), 
+    Gamedata::getInstance().getXmlBool("backpicture/transparency")) ),
+  backgroundfram("backpicture", backSurface),
 
   makeVideo( false ),
   frameCount( 0 ),
-  username(  Gamedata::getInstance()->getXmlStr("username") ),
-  frameMax( Gamedata::getInstance()->getXmlInt("frameMax") ),
-  TITLE( Gamedata::getInstance()->getXmlStr("screenTitle") )
+  username(  Gamedata::getInstance().getXmlStr("username") ),
+  frameMax( Gamedata::getInstance().getXmlInt("frameMax") ),
+  TITLE( Gamedata::getInstance().getXmlStr("screenTitle") ),
+  svector()
 {
   svector.reserve(50);
   for (int i = 0; i < 50; ++i)
@@ -52,29 +52,30 @@ Manager::Manager() :
 }
 
 void Manager::drawBackground() const {
+  /*
   SDL_FillRect( screen, NULL, 
     SDL_MapRGB(screen->format, backRed, backGreen, backBlue) );
   SDL_Rect dest = {0, 0, 0, 0};
   SDL_BlitSurface( screen, NULL, screen, &dest );
+*/
 }
 
 void Manager::drawText() const{
-	io->printMessageCenteredAt("Project #1 Solution",0);
+	io.printMessageCenteredAt("Project #1 Solution",0);
 
  	std::stringstream ss;
   	ss << "Avg Fps: " << clock.getFps();
-  	io->printMessageAt(ss.str(),0,0);
+  	io.printMessageAt(ss.str(),0,0);
 
   	ss.str("");
   	ss<< "Seconds: " << clock.getTime();
-  	io->printMessageAt(ss.str(),0,20);
+  	io.printMessageAt(ss.str(),0,20);
 
-  	io->printMessageAt("Yaolong Yu's project",0,400);
+  	io.printMessageAt("Yaolong Yu's project",0,400);
 }
 
 void Manager::draw() const {
-  drawBackground();
-  backPicture.draw();
+  backgroundfram.draw(0,0);
   orb.draw();
   for (int i = 0; i < 50; ++i)
   {
