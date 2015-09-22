@@ -74,11 +74,25 @@ unsigned int Clock::getTicksSinceLastFrame() const {
   }
   else
   {
-    return ticks;
+    if (sloMo == false)
+    {
+      return ticks;
+    }
+    else
+    {
+      return ticks/2;
+    }
+    
   }
 }
 
 void Clock::toggleSloMo() {
+    sloMo = true;
+}
+
+void Clock::toggleUnSloMo()
+{
+    sloMo = false;
 }
 
 int Clock::getFps() const { 
@@ -106,7 +120,15 @@ int Clock::getFps() const {
       }
     }
   
-    return fps;
+    if (sloMo == false)
+    {
+      return fps;
+    }
+    else
+    {
+      return fps/2;
+    }
+    
 }
 
 int Clock::getTime() const{

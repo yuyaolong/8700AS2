@@ -38,10 +38,11 @@ Manager::Manager() :
   username(  Gamedata::getInstance().getXmlStr("username") ),
   frameMax( Gamedata::getInstance().getXmlInt("frameMax") ),
   TITLE( Gamedata::getInstance().getXmlStr("screenTitle") ),
-  svector()
+  svector(),
+  spriteNum(Gamedata::getInstance().getXmlInt("greenorb/spriteNum"))
 {
-  svector.reserve(50);
-  for (int i = 0; i < 50; ++i)
+  svector.reserve(spriteNum);
+  for (unsigned int i = 0; i < spriteNum; ++i)
   {
       svector.push_back(Sprite("greenorb", orbFrame));
   }
@@ -51,33 +52,32 @@ Manager::Manager() :
   atexit(SDL_Quit);
 }
 
-void Manager::drawBackground() const {
-  /*
-  SDL_FillRect( screen, NULL, 
-    SDL_MapRGB(screen->format, backRed, backGreen, backBlue) );
-  SDL_Rect dest = {0, 0, 0, 0};
-  SDL_BlitSurface( screen, NULL, screen, &dest );
-*/
-}
 
 void Manager::drawText() const{
-	io.printMessageCenteredAt("Project #1 Solution",0);
+	io.printMessageCenteredAt(Gamedata::getInstance().getXmlStr("text/stringTitle"),
+                            Gamedata::getInstance().getXmlInt("text/Titley"));
 
- 	std::stringstream ss;
-  	ss << "Avg Fps: " << clock.getFps();
-  	io.printMessageAt(ss.str(),0,0);
+ 	  io.printMessageValueAt(Gamedata::getInstance().getXmlStr("text/stringFps"),
+                            clock.getFps(),
+                            Gamedata::getInstance().getXmlInt("text/Fpsx"),
+                            Gamedata::getInstance().getXmlInt("text/Fpsy")
+                            );
 
-  	ss.str("");
-  	ss<< "Seconds: " << clock.getTime();
-  	io.printMessageAt(ss.str(),0,20);
+     io.printMessageValueAt(Gamedata::getInstance().getXmlStr("text/stringSec"),
+                            clock.getTime(),
+                            Gamedata::getInstance().getXmlInt("text/Secx"),
+                            Gamedata::getInstance().getXmlInt("text/Secy")
+                            );
 
-  	io.printMessageAt("Yaolong Yu's project",0,400);
+  	io.printMessageAt(Gamedata::getInstance().getXmlStr("text/stringSign"),
+                      Gamedata::getInstance().getXmlInt("text/Signx"),
+                      Gamedata::getInstance().getXmlInt("text/Signy"));
 }
 
 void Manager::draw() const {
   backgroundfram.draw(0,0);
   orb.draw();
-  for (int i = 0; i < 50; ++i)
+  for (unsigned int i = 0; i < spriteNum; ++i)
   {
     svector[i].draw();
   }
@@ -95,7 +95,7 @@ void Manager::update() {
   clock.update();
   Uint32 ticks = clock.getTicksSinceLastFrame();
   orb.update(ticks);
-  for (int i = 0; i < 50; ++i)
+  for (unsigned int i = 0; i < spriteNum; ++i)
   {
     svector[i].update(ticks);
   }
@@ -138,6 +138,15 @@ void Manager::play() {
         if (keystate[SDLK_p] ) {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
+        }
+
+        if (keystate[SDLK_s] && !makeVideo) {
+          if (!clock.isPaused())
+          {
+             if ( clock.isSloMo() ) clock.toggleUnSloMo();
+                else clock.toggleSloMo();;
+            
+          }
         }
       }
     }

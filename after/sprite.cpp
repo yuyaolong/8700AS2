@@ -7,8 +7,8 @@ Sprite::Sprite(const std::string& name, const Frame* const frame) :
   Drawable(name,
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
                     Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1:+1), 
-                    Gamedata::getInstance().getXmlInt(name+"/speedY")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1:+1))
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1.3:+1.1), 
+                    Gamedata::getInstance().getXmlInt(name+"/speedY")*(rand()*1.0/RAND_MAX+0.3)*(rand()%2?-1.2:+1.4))
            ),
   frame( frame ),
   frameWidth(frame->getWidth()),

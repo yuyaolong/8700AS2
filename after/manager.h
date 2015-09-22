@@ -36,6 +36,8 @@ private:
 
   std::vector<Sprite> svector;
 
+  unsigned int spriteNum;
+
   void draw() const;
   void update();
 

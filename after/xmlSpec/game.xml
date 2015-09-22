@@ -43,6 +43,7 @@
   <speedX>175</speedX>
   <speedY>175</speedY>
   <transparency>true</transparency>
+  <spriteNum>100</spriteNum>
 </greenorb>
 
 
@@ -56,7 +57,22 @@
   <speedX>0</speedX>
   <speedY>0</speedY>
   <transparency>true</transparency>
-
 </backpicture>
+
+
+<text>
+  <stringFps>AVG Fps : </stringFps>
+    <Fpsx>0</Fpsx>
+    <Fpsy>0</Fpsy>
+  <stringSec>Seconds :</stringSec>
+    <Secx>0</Secx>
+    <Secy>20</Secy>
+  <stringTitle>Project #1 Solution</stringTitle>
+    <Titley>0</Titley>
+  <stringSign>Yaolong Yu's Project</stringSign>
+    <Signx>0</Signx>
+    <Signy>400</Signy>
+</text>  
+
 
 </GameData>

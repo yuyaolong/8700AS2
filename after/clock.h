@@ -10,8 +10,10 @@ public:
   unsigned int getTicksSinceInit() const { return sumOfTicks; }
 
   void toggleSloMo();
+  void toggleUnSloMo();
   bool isStarted() const { return started; }
   bool isPaused() const  { return paused;  }
+  bool isSloMo() const {return sloMo;}
   int getFps() const;
   int getTime() const;
 
@@ -30,7 +32,7 @@ private:
   unsigned int totalTicks;
 
   unsigned int seconds;
-  
+
   unsigned int pauseTicks;
   unsigned int pauseStartTicks;
   unsigned int sumOfPauseTicks;
