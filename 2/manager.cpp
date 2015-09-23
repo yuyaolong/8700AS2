@@ -8,8 +8,10 @@
 
 Manager::~Manager() { 
   // Manager made it, so Manager needs to delete it
-  SDL_FreeSurface(orbSurface);
+	SDL_FreeSurface(orbSurface);
+	SDL_FreeSurface(backSurface);
   delete orbFrame;
+  
   //delete Gamedata::getInstance();
 }
 

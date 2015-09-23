@@ -1,0 +1,78 @@
+<?xml version = "1.0"?>
+<GameData>
+<screenTitle>yaolony</screenTitle>
+<maxStringSize>50</maxStringSize>
+<username>yaolony</username>
+<frameMax>200</frameMax>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>854</width>
+  <height>480</height>
+</world>
+
+<back>
+  <red>0</red>
+  <green>0</green>
+  <blue>0</blue>
+</back>
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <unused>0</unused>
+</font>
+
+<greenorb>
+  <file>images/mushroomUse.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>53</width>
+  <height>59</height>
+  <startLoc x="320" y="240"/>
+  <speedX>175</speedX>
+  <speedY>175</speedY>
+  <transparency>true</transparency>
+  <spriteNum>200</spriteNum>
+</greenorb>
+
+
+<backpicture>
+  <file>images/backgroundUse.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>480</height>
+  <startLoc x="0" y="0"/>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</backpicture>
+
+
+<text>
+  <stringFps>AVG Fps : </stringFps>
+    <Fpsx>0</Fpsx>
+    <Fpsy>0</Fpsy>
+  <stringSec>Seconds :</stringSec>
+    <Secx>0</Secx>
+    <Secy>20</Secy>
+  <stringTitle>Project #1 Solution</stringTitle>
+    <Titley>0</Titley>
+  <stringSign>Yaolong Yu's Project</stringSign>
+    <Signx>0</Signx>
+    <Signy>400</Signy>
+</text>  
+
+
+</GameData>
