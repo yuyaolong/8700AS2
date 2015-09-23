@@ -120,14 +120,8 @@ int Clock::getFps() const {
       }
     }
   
-    if (sloMo == false)
-    {
-      return fps;
-    }
-    else
-    {
-      return fps/2;
-    }
+    return fps;
+    
     
 }
 
